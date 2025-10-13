@@ -21,7 +21,11 @@ products = [
 
 
 def home(request):
-    return render(request, 'index.html')
+    context = {
+        'name': 'Иванов Иван Иванович',
+        'email': 'my_mail@email.com'
+    }
+    return render(request, 'index.html', context)
 
 
 def about(request):
