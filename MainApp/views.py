@@ -21,46 +21,20 @@ products = [
 
 
 def home(request):
-    context = {
-        'name': 'Иванов Иван Иванович',
-        'email': 'my_mail@email.com'
-    }
-    return render(request, 'index.html', context)
+    return render(request, 'index.html', person)
 
 
 def about(request):
-    text = f"""
-    <div class='contact'>
-        <p>Имя: {person.get('first_name')}</p>
-        <p>Отчество: {person['middle_name']}</p>
-        <p>Фамилия: {person['last_name']}</p>
-        <p>телефон: {person['phone']}</p>
-        <p>email: {person['email']}</p>
-    </div>"""
-    return HttpResponse(text)
+    return render(request, 'about.html', person)
 
 
 def item(request, id: int):
     lstIds = [x['id'] for x in products]
     if id in lstIds:
         product = [x for x in products if x['id'] == id][0]
-        text = f"""
-        <p style='font-weight: bold;'>Product information:</p>
-        <ul>
-            <li>Name: {product['name']}</li>
-            <li>Quantity: {product['quantity']}</li>
-        </ul>
-        <a href='/items'>Back to product list</a>
-        """
-        return HttpResponse(text)
-    return HttpResponse('Товар не найден')
+        return render(request, 'item.html', product)
+    return render(request, 'error.html')
 
 
 def items(request):
-    list_items = ""
-    for i in products:
-        list_items += f'<li><a href="item/{i['id']}">{i}</a></li>'
-    text = f"""
-    <h2>All products</h2>
-    <ol>{list_items}</ol>"""
-    return HttpResponse(text)
+    return render(request, 'items.html', context={'products': products})
