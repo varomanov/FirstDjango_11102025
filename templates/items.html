@@ -4,25 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Все товары</title>
+    <title>All products</title>
 </head>
 
 <body>
     <p>
         <a href="/">Home</a>&nbsp;&frasl;&nbsp;
-        <a href="/items">Items</a>&nbsp;&frasl;&nbsp;
-        <a href="/about">About</a>
-    </p> 
-    <h2>Все товары</h2>
-    {% if products %}
-        <ol>
-            {% for i in products %}
-                <li><a href="item/{{ i.id }}">{{ i }}</a></li>
-            {% endfor %}
-        </ol>
-    {% else %}
-        <p style='color: red;'>Товар отсутствует</p>
-    {% endif%}
+        <a href="/about">About</a>&nbsp;&frasl;&nbsp;
+        <a href="/items">Items</a>
+    </p>
+    <h2>All products</h2>
+    <ol>
+        {% for i in products %}
+            <li><a href="item/{{ i.id }}">{{ i.name }}-({{ i.brand }})</a></li>
+        {% endfor %}
+    </ol>
 </body>
 
 </html>

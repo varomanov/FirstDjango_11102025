@@ -8,16 +8,16 @@
 <body>
     <p>
         <a href="/">Home</a>&nbsp;&frasl;&nbsp;
-        <a href="/items">Items</a>&nbsp;&frasl;&nbsp;
-        <a href="/about">About</a>
+        <a href="/about">About</a>&nbsp;&frasl;&nbsp;
+        <a href="/items">Items</a>
     </p>
     <h2>Product information:</h2>
-    {% if quantity == 0  %}
-        <p>Товар отсутствует!</p>
+    {% if count == 0  %}
+        <p>There is not product!</p>
     {% else %}
         <ul>
             <li>Name: {{ name }}</li>
-            <li>Quantity: {{ quantity }}</li>
+            <li>Quantity: {{ count }}</li>
         </ul>
     {% endif %}
     <a href='/items'>Back to product list</a>

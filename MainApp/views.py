@@ -1,24 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from MainApp.models import Item
 
 # Create your views here.
 
 person = {
-    'first_name': 'Иван',
-    'last_name': 'Иванов',
-    'middle_name': 'Петрович',
+    'first_name': 'Ivan',
+    'last_name': 'Ivanov',
+    'middle_name': 'Petrovich',
     'phone': '8-923-600-01-01',
     'email': 'vasya@mail.ru',
 }
 
-products = [
-    {"id": 1, "name": "Кроссовки abibas", "quantity": 5},
-    {"id": 2, "name": "Куртка кожаная", "quantity": 2},
-    {"id": 5, "name": "Coca-cola 1 литр", "quantity": 12},
-    {"id": 7, "name": "Картофель фри", "quantity": 0},
-    {"id": 8, "name": "Кепка", "quantity": 124},
-]
-
+products = Item.objects.all()
 
 def home(request):
     return render(request, 'index.html', person)
@@ -29,10 +23,10 @@ def about(request):
 
 
 def item(request, id: int):
-    lstIds = [x['id'] for x in products]
+    lstIds = [x.id for x in products]
     if id in lstIds:
-        product = [x for x in products if x['id'] == id][0]
-        return render(request, 'item.html', product)
+        product = [x for x in products if x.id == id][0]
+        return render(request, 'item.html', context={'name': product.name, 'count': product.count})
     return render(request, 'error.html')
 
 
