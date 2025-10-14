@@ -5,6 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All products</title>
+    <style>
+        body {
+            font-family: Verdana, Arial, sans-serif;
+        }
+        .card {
+            display: flex;
+            flex-flow: row wrap;
+            align-Items: center;
+            justify-content: flex-start;
+            width: 100%;
+            height: 150px;
+            gap: 10px;
+        }
+
+        .card-item {
+            min-width: 200px;
+            border: 1px solid;
+            text-align: center;
+            padding: 1em;
+            cursor: pointer;
+            border: 5px lightgrey;
+            border-radius: 10px;
+            background-image: linear-gradient(45deg, lightgrey, #fff);
+        }
+        
+        .card-item:hover {
+            background-image: linear-gradient(45deg, darkgrey, #fff);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .card-item h3 { color: darkblue; font-size: 1.5em;}
+
+
+    </style>
 </head>
 
 <body>
@@ -14,11 +51,16 @@
         <a href="/items">Items</a>
     </p>
     <h2>All products</h2>
-    <ol>
+    <div class="card">
         {% for i in products %}
-            <li><a href="item/{{ i.id }}">{{ i.name }}-({{ i.brand }})</a></li>
+            <a href="item/{{ i.id }}">
+                <div class="card-item">
+                    <h3>{{ i.name }}</h3>
+                    <p>{{ i.description }}</p>
+                </div>
+            </a>
         {% endfor %}
-    </ol>
+    </div>
 </body>
 
 </html>
