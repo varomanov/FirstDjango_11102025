@@ -12,10 +12,14 @@
         <a href="/about">About</a>
     </p>
     <h2>Product information:</h2>
-    <ul>
-        <li>Name: {{ name }}</li>
-        <li>Quantity: {{ quantity }}</li>
-    </ul>
+    {% if quantity == 0  %}
+        <p>Товар отсутствует!</p>
+    {% else %}
+        <ul>
+            <li>Name: {{ name }}</li>
+            <li>Quantity: {{ quantity }}</li>
+        </ul>
+    {% endif %}
     <a href='/items'>Back to product list</a>
 </body>
 </html>
