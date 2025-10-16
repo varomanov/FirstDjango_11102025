@@ -1,24 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
-</head>
+{% block title %}
+<title>Home</title>
+{% endblock title %}
 
-<body>
-    <p>
-        <a href="/">Home</a>&nbsp;&frasl;&nbsp;
-        <a href="/about">About</a>&nbsp;&frasl;&nbsp;
-        <a href="/items">Items</a>
-    </p>
-    <h1>Greeting!</h1>
+
+{% block content %}
+{% include 'header.html' %}
+<h1>Greeting!</h1>
     <p>My name: <i>{{ first_name }}</i></p>
     <p>Email: <i>{{ email }}</i></p>
     <p>This is main page</p>
     <p><i>Building in process...</i></p>
-    <p><a href="/items">All product</a></p>
-</body>
-
-</html>
+    <p><a href="{% url 'items' %}">All product</a></p>
+{% endblock content %}

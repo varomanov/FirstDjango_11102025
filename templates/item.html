@@ -1,25 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Item</title>
-</head>
-<body>
-    <p>
-        <a href="/">Home</a>&nbsp;&frasl;&nbsp;
-        <a href="/about">About</a>&nbsp;&frasl;&nbsp;
-        <a href="/items">Items</a>
-    </p>
-    <h2>Product information:</h2>
-    {% if count == 0  %}
-        <p>There is not product!</p>
-    {% else %}
-        <ul>
-            <li>Name: {{ name }}</li>
-            <li>Quantity: {{ count }}</li>
-        </ul>
-    {% endif %}
-    <a href='/items'>Back to product list</a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block tite %}
+<title>Item</title>
+{% endblock tite %}
+
+{% block content %}
+{% include 'header.html' %}
+<h2>Product information:</h2>
+<ul>
+    <li>Name: {{ name }}</li>
+    <li>Quantity: {{ count | default:"All products sold!" }}</li>
+</ul>
+<a href="{% url 'items' %}">Back to product list</a>
+{% endblock content %}

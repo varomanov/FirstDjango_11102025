@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error page</title>
-</head>
-<body>
-    <p>
-        <a href="/">Home</a>&nbsp;&frasl;&nbsp;
-        <a href="/about">About</a>&nbsp;&frasl;&nbsp;
-        <a href="/items">Items</a>
-    </p>
-    <h1>Requested data not founded</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Error page</title>
+{% endblock title %}
+
+{% block content %}
+{% include 'header.html' %}
+<h1>Requested data not founded</h1>
+{% endblock content %}

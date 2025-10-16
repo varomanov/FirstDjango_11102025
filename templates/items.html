@@ -1,66 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All products</title>
-    <style>
-        body {
-            font-family: Verdana, Arial, sans-serif;
-        }
-        .card {
-            display: flex;
-            flex-flow: row wrap;
-            align-Items: center;
-            justify-content: flex-start;
-            width: 100%;
-            height: 150px;
-            gap: 10px;
-        }
+{% block title %}
+<title>All products</title>
+{% endblock title %}
 
-        .card-item {
-            min-width: 200px;
-            border: 1px solid;
-            text-align: center;
-            padding: 1em;
-            cursor: pointer;
-            border: 5px lightgrey;
-            border-radius: 10px;
-            background-image: linear-gradient(45deg, lightgrey, #fff);
-        }
-        
-        .card-item:hover {
-            background-image: linear-gradient(45deg, darkgrey, #fff);
-        }
+{% block style %}
+{{ block.super }}
+<link rel="stylesheet" href="static/style.css">
+{% endblock style %}
 
-        a {
-            text-decoration: none;
-        }
-
-        .card-item h3 { color: darkblue; font-size: 1.5em;}
-
-
-    </style>
-</head>
-
-<body>
-    <p>
-        <a href="/">Home</a>&nbsp;&frasl;&nbsp;
-        <a href="/about">About</a>&nbsp;&frasl;&nbsp;
-        <a href="/items">Items</a>
-    </p>
-    <h2>All products</h2>
-    <div class="card">
-        {% for i in products %}
-            <a href="item/{{ i.id }}">
-                <div class="card-item">
-                    <h3>{{ i.name }}</h3>
-                    <p>{{ i.description }}</p>
-                </div>
-            </a>
-        {% endfor %}
-    </div>
-</body>
-
-</html>
+{% block content %}
+{% include 'header.html' %}
+<h2>All products</h2>
+<div class="card">
+    {% for i in products %}
+    <a href="{% url 'item-detail' i.id %}">
+        <div class="card-item">
+            <h3>{{ i.name }}</h3>
+            <p>{{ i.description }}</p>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock content %}
