@@ -4,12 +4,30 @@
 <title>Item</title>
 {% endblock tite %}
 
+{% block style %}
+{{ block.super }}
+<style>
+    li.red::marker { color: red; list-style-type: square; font-size: 1.4em;}
+    li.blue::marker { color: blue; list-style-type: square; font-size: 1.4em; }
+    li.green::marker { color: green; list-style-type: square; font-size: 1.4em; }
+</style>
+{% endblock style %}
+
 {% block content %}
 {% include 'header.html' %}
 <h2>Product information:</h2>
 <ul>
     <li>Name: {{ name }}</li>
     <li>Quantity: {{ count | default:"All products sold!" }}</li>
+</ul>
+
+<h3>Colors</h3>
+<ul>
+    {% for c in colors %}
+    <li class="{{ c.name }}">{{ c.name }}</li>
+    {% empty %}
+    No info
+    {% endfor %}
 </ul>
 <a href="{% url 'items' %}">Back to product list</a>
 {% endblock content %}

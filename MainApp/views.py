@@ -14,6 +14,7 @@ person = {
 
 products = Item.objects.all()
 
+
 def home(request):
     return render(request, 'index.html', person)
 
@@ -26,7 +27,8 @@ def item(request, id: int):
     lstIds = [x.id for x in products]
     if id in lstIds:
         product = [x for x in products if x.id == id][0]
-        return render(request, 'item.html', context={'name': product.name, 'count': product.count})
+        return render(request, 'item.html',
+                      context={'name': product.name, 'count': product.count, 'colors': product.colors.all()})
     return render(request, 'error.html')
 
 
