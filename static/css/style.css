@@ -31,3 +31,8 @@ a {
 }
 
 .card-item h3 { color: darkblue; font-size: 1.5em;}
+
+.logo-img {
+    width: 80px;
+    height: 80px;
+}

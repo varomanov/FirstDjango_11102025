@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
 <title>Home</title>
 {% endblock title %}
 
-
 {% block content %}
 {% include 'header.html' %}
+<img width=100; src="{% static 'images/django.svg' %}">
 <h1>Greeting!</h1>
     <p>My name: <i>{{ first_name }}</i></p>
     <p>Email: <i>{{ email }}</i></p>
